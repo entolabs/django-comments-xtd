@@ -256,7 +256,7 @@ def notify_comment_followers(comment):
     # model = apps.get_model(comment.content_type.app_label,
     #                        comment.content_type.model)
     # target = model._default_manager.get(pk=comment.object_pk)
-    subject = _("new comment posted")
+    subject = _(settings.COMMENTS_XTD_NOTIFICATION_EMAIL_SUBJECT)
     text_message_template = loader.get_template(
         "django_comments_xtd/email_followup_comment.txt")
     if settings.COMMENTS_XTD_SEND_HTML_EMAIL:

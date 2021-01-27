@@ -16,6 +16,9 @@ COMMENTS_XTD_FROM_EMAIL = settings.DEFAULT_FROM_EMAIL
 # Contact email address.
 COMMENTS_XTD_CONTACT_EMAIL = settings.DEFAULT_FROM_EMAIL
 
+# Default subject for notification emails
+COMMENTS_XTD_NOTIFICATION_EMAIL_SUBJECT = "new comment posted"
+
 # Maximum Thread Level.
 COMMENTS_XTD_MAX_THREAD_LEVEL = 0
 
