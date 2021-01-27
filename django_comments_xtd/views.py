@@ -249,7 +249,7 @@ def notify_comment_followers(comment):
 
     for instance in previous_comments:
         followers[instance.user_email] = (
-            instance.user_name,
+            instance.user,
             signed.dumps(instance, compress=True,
                          extra_key=settings.COMMENTS_XTD_SALT))
 
@@ -263,9 +263,9 @@ def notify_comment_followers(comment):
         html_message_template = loader.get_template(
             "django_comments_xtd/email_followup_comment.html")
 
-    for email, (name, key) in six.iteritems(followers):
+    for email, (user, key) in six.iteritems(followers):
         mute_url = reverse('comments-xtd-mute', args=[key.decode('utf-8')])
-        message_context = {'user_name': name,
+        message_context = {'user': user,
                            'comment': comment,
                            # 'content_object': target,
                            'mute_url': mute_url,

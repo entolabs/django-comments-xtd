@@ -1,5 +1,5 @@
 {% load i18n %}
-{{ user_name }},
+{{ user.username }},
 
 {% blocktrans %}There is a new comment following up yours.{% endblocktrans %}
 
