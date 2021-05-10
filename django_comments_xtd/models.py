@@ -70,6 +70,7 @@ class XtdComment(Comment):
     objects = XtdCommentManager()
     edited = models.BooleanField(blank=True, default=False,
                                  help_text=_("Has comment been edited?"))
+    edited_at = models.DateTimeField(auto_now=True)
 
     def save(self, *args, **kwargs):
         is_new = self.pk is None
