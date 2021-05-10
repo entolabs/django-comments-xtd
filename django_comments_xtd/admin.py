@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
+from django.utils.safestring import mark_safe
 
 from django_comments import get_model
 from django_comments.admin import CommentsAdmin
@@ -11,7 +12,7 @@ from django_comments_xtd.models import XtdComment, BlackListedDomain
 class XtdCommentsAdmin(CommentsAdmin):
     list_display = ('cid', 'thread_level', 'nested_count', 'name',
                     'content_type', 'object_pk', 'ip_address', 'submit_date',
-                    'followup', 'is_public', 'is_removed')
+                    'followup', 'is_public', 'is_removed', 'link')
     list_display_links = ('cid',)
     list_filter = ('content_type', 'is_public', 'is_removed', 'followup')
     fieldsets = (
@@ -37,6 +38,9 @@ class XtdCommentsAdmin(CommentsAdmin):
 
     def cid(self, obj):
         return 'c%d' % obj.id
+
+    def link(self, obj):
+        return mark_safe(f"""<a href="{obj.get_absolute_url()}">{obj.get_absolute_url()}</a> """)
 
 
 class BlackListedDomainAdmin(admin.ModelAdmin):
